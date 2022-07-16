@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using MelonLoader;
+using ReMod.Core.Unity;
 using ReMod.Core.VRChat;
 using TMPro;
 using UnhollowerBaseLib.Attributes;
@@ -90,7 +91,7 @@ namespace ReMod.Core.Notification
             if (NotificationSystem.UseVRChatNotificationSystem)
             {
                 //Using VRChat HUD Messages
-                VRCUiManager.prop_VRCUiManager_0.QueueHudMessage($"[{_currentNotification.Title}] {_currentNotification.Description}", Color.white, _currentNotification.DisplayLength);
+                VRCUiManager.prop_VRCUiManager_0.QueueHudMessage($"[{_currentNotification.Title}] {_currentNotification.Description}", _currentNotification.BackgroundColor.ScaleMinimumValue(.55f), _currentNotification.DisplayLength);
                 return;
             }
             
