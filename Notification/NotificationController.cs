@@ -10,6 +10,7 @@ using UnhollowerRuntimeLib;
 using UnityEngine;
 using UnityEngine.UI;
 using VRC;
+using XSNotifications;
 
 namespace ReMod.Core.Notification
 {
@@ -87,6 +88,15 @@ namespace ReMod.Core.Notification
             }
             
             _currentNotification = _notificationQueue.Dequeue();
+
+
+            if(NotificationSystem.xsoMode.Value != NotificationSystem.xsoModes.off)
+            {
+                XSNotifier.Instance.SendNotification((XSNotification)_currentNotification);
+            }
+
+            if (NotificationSystem.xsoMode.Value == NotificationSystem.xsoModes.exclusive) return;
+            
 
             if (NotificationSystem.UseVRChatNotificationSystem)
             {

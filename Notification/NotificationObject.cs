@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using ReMod.Core.Unity;
+using XSNotifications;
 
 namespace ReMod.Core.Notification
 {
@@ -17,6 +19,21 @@ namespace ReMod.Core.Notification
             Icon = icon;
             DisplayLength = displayLength;
             BackgroundColor = backgroundColor;
+        }
+
+        public static explicit operator XSNotification(NotificationObject rn)
+        {
+            return new XSNotification()
+            {
+                Title = rn.Title,
+                Content = rn.Description,
+                Timeout = rn.DisplayLength,
+                UseBase64Icon = true,
+                Icon = rn.Icon.texture.AsBase64(),
+                Volume = NotificationSystem.xsoVolume.Value,
+                Opacity = rn.BackgroundColor.ScaleMinimumAlpha(.5f).a,
+                SourceApp = "vrchat/remod.core"
+            };
         }
     }
 }

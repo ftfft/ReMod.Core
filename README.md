@@ -36,3 +36,4 @@ In case you do have something to contribute, please create a pull request. Try t
 [@imxLucid](https://github.com/imxLucid)  
 [@DDAkebono](https://github.com/DDAkebono)  
 [@MintLily](https://github.com/MintLily)
+[XSNotificationsLib](https://github.com/nnaaa-vr/XSNotifications)

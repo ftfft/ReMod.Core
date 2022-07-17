@@ -20,7 +20,11 @@ namespace ReMod.Core.Notification
         public static MelonPreferences_Entry<float> NotificationX;
         public static MelonPreferences_Entry<float> NotificationY;
         public static bool UseVRChatNotificationSystem;
-        
+
+        public enum xsoModes { off, both, exclusive }
+        public static MelonPreferences_Entry<xsoModes> xsoMode;
+        public static MelonPreferences_Entry<float> xsoVolume;
+
         //AssetBundle Parts
         private static AssetBundle _notifBundle;
         private static GameObject _notificationPrefab;
@@ -59,7 +63,10 @@ namespace ReMod.Core.Notification
             NotificationCoordinateAlignment.OnValueChanged += (_, _) => UpdateNotificationAlignment(null, null);
             NotificationX.OnValueChanged += (_, _) => UpdateNotificationAlignment(null, null);
             NotificationY.OnValueChanged += (_, _) => UpdateNotificationAlignment(null, null);
-            
+
+            xsoMode = MelonPreferences.CreateEntry("ReModCore", "xsoMode", xsoModes.both, "XSO Mode", "Controls how the XSOverlay integration functions.");
+            xsoVolume = MelonPreferences.CreateEntry("ReModCore", "xsoVolume", .7f, "XSO Volume", "Sets the notification sound volume");
+
             //Create UIX settings enum
             RegSettingsEnum("ReModCore", "NotificationAlignment", new[] {("centerMiddle", "Middle Centered"), ("topCenter", "Top Centered"), ("topLeft", "Top Left"), ("topRight", "Top Right"), ("bottomCenter", "Bottom Centered"), ("bottomLeft", "Bottom Left"), ("bottomRight", "Bottom Right")});
 
@@ -199,7 +206,7 @@ namespace ReMod.Core.Notification
                 _notificationPrefab.hideFlags |= HideFlags.DontUnloadUnusedAsset;
             }
         }
-        
+
         #region UIXAdapter
         
         private static bool? _uixAvailable;

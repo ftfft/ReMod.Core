@@ -107,5 +107,15 @@ namespace ReMod.Core.Unity
         {
             return new Vector2(i.x.RoundAmount(nearestFactor), i.y.RoundAmount(nearestFactor));
         }
+
+        /// <summary>
+        /// Returns the image encoded as a base64 string.
+        /// </summary>
+        /// <param name="tex">The texture to get data from</param>
+        public static string AsBase64(this Texture2D tex)
+        {
+            if (tex == null) return null;
+            return Convert.ToBase64String(ImageConversion.EncodeToPNG(tex));
+        }
     }
 }

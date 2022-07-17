@@ -129,6 +129,11 @@
     <Compile Include="Notification\NotificationController.cs" />
     <Compile Include="Notification\NotificationObject.cs" />
     <Compile Include="Notification\NotificationSystem.cs" />
+    <Compile Include="Notification\XSNotificationsLib\XSExceptions.cs" />
+    <Compile Include="Notification\XSNotificationsLib\XSEnums.cs" />
+    <Compile Include="Notification\XSNotificationsLib\Helpers\XSGlobals.cs" />
+    <Compile Include="Notification\XSNotificationsLib\XSNotification.cs" />
+    <Compile Include="Notification\XSNotificationsLib\XSNotifier.cs" />
     <Compile Include="UI\QuickMenu\IButtonPage.cs" />
     <Compile Include="UI\QuickMenu\ReRadioToggle.cs" />
     <Compile Include="UI\QuickMenu\ReRadioTogglePage.cs" />
@@ -172,10 +177,6 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Notification\notification" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="XSNotifications" Version="0.1.2" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="('$(CopyToVrc)'=='true') And '$(TargetFramework)' == 'net472' And (Exists('$(VRCPath)'))">
